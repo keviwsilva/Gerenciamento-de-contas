@@ -1,0 +1,144 @@
+
+<div class="mes">
+    <h2>De qual mês:</h2>
+    <select [(ngModel)]="mesSelecionado" (change)="saveSelectedOption()" (change)="ngOnInit()">
+        <option value="Janeiro">Janeiro</option>
+        <option value="Fevereiro" selected>Fevereiro</option>
+        <option value="Março">Março</option>
+        <option value="Abril">Abril</option>
+        <option value="Maio">Maio</option>
+        <option value="Junho">Junho</option>
+        <option value="Julho">Julho</option>
+        <option value="Agosto">Agosto</option>
+        <option value="Setembro">Setembro</option>
+        <option value="Outubro">Outubro</option>
+        <option value="Novembro">Novembro</option>
+        <option value="Dezembro">Dezembro</option>
+    </select>
+</div>
+<div class="information">
+    <div class="counts">
+        <h3 class="title">Lista de Contas do mês: {{mesSelecionado}}</h3>
+        <span class="material-symbols-outlined">
+            analytics
+            </span><hr />
+
+        <div class="popup">
+            <form *ngIf="showPopUp" [formGroup]="formulario" (ngSubmit)="CadastrarConta()">
+                <div class="popup-mounth">
+                    <span (click)="closePopup()" class="close">&times;</span>
+                    <div class="input-info">
+                        <!-- <div class="form-group"> -->
+                        <input type="text" class="name" placeholder="Nome da conta" formControlName="nome">
+                        <!-- </div> -->
+                        <!-- <div class="form-group"> -->
+                        <input type="number" class="value" placeholder="Valor conta" formControlName="valor">
+                        <!-- </div> -->
+                        <button type="submit" class="btn">Adicionar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="list-counts">
+            <div class="countnot" *ngIf="contas.length == 0">
+                <h3 class="sem-conta">Sem Contas ainda</h3>
+            </div>
+            <div class="count" *ngIf="contas.length > 0">
+                <div class="titletable">
+                    <h6>nome</h6>
+                    <h6>valor</h6>
+                    <h6>excluir</h6>
+                </div>
+                <div class="infotable">
+                <table class="tablecount">
+                    <thead>
+                        <!-- <tr class="headcounts">
+                            <th>Nome</th>
+                            <th>Valor</th>
+                            <th>Excluir</th>
+                        </tr> -->
+                    </thead>
+                    <tbody >
+                        <tr *ngFor="let conta of contas">
+                            <td>{{conta.nome}}</td>
+                            <td>R${{conta.valor}}</td>
+
+                            <td>
+                                <!-- <button type="button" class="Paid" (click)="AtualizarConta(conta.contaId)">
+                            <fa-icon [icon]="faCheckCircle"></fa-icon>
+                        </button> -->
+                                <button type="button" class="deletecount" (click)="ExcluirConta(conta.contaId)">
+                                    <fa-icon [icon]="faXmark"></fa-icon>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+        <div class="button">
+            <button type="button" class="btn-conta" (click)="showContentPop()">
+                Adicionar Conta
+            </button>
+        </div>
+</div>
+
+    <div class="balance">
+        <div class="title">
+            <h3>Saldo</h3>
+            <span class="material-symbols-outlined">
+                monetization_on
+                </span>
+        </div>
+        <hr>
+        <form *ngIf="showPopUpBalance" [formGroup]="balance" (ngSubmit)="CadastrarSaldo()">
+            <div class="popup-saldo">
+                <span (click)="closePopupBalance()" class="close">&times;</span>
+                <div class="input-info">
+                    <input type="number" class="value" placeholder="saldo" formControlName="saldo">
+                    
+                    <button type="submit" class="btn">Adicionar</button>
+                </div>
+            </div>
+        </form>
+        <div class="balance1" *ngFor="let balances of balances">
+            
+            <div class="bruto">
+                <h2>R$ {{balances.saldo}}</h2>
+                <h6>bruto</h6>
+            </div>
+            <hr >
+            <div class="liquido">
+                <h3>R${{saldo}}</h3>
+                <h6>Liquido</h6>
+            </div>
+        </div>
+        <hr id="hr2">
+        <div class="button">
+            <button type="button" class="btn-saldo" (click)="showContentPopBalance()">
+                Adicionar Saldo
+            </button>
+        </div>
+    </div>
+    <!-- <div class="received">
+
+    </div> -->
+</div>
+<div class="canvas">
+<div class="canva">
+    <canvas id="meuCanvas" ></canvas>
+    
+</div>
+<div class="canva2">
+    <canvas id="meuCanvas2"></canvas>
+</div>
+</div>
+
+
+<script>
+
+
+</script>
+  

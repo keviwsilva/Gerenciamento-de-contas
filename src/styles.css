@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    background-color: rgb(231, 230, 230);
+    width: 100%;
+    overflow-x: hidden;
+    /* font-family: 'arial'; */
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: radio-canada;
+    src: url("/src/assets/fonts/RadioCanada-VariableFont_wdth\,wght.ttf");
+}

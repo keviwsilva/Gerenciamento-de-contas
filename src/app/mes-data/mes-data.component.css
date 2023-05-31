@@ -1,0 +1,448 @@
+.mes{
+    position: relative;
+    margin-left: 6.5%;
+    margin-top: 30px;
+    padding-left: 15px;
+    display: flex;
+    height: 5vh;
+    width: 45%;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px #c7c7c7;
+}
+
+.mes h2{
+    margin-top: 5px;
+    font-size: 30px;
+}
+
+.mes select{
+
+    /* appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    color: #000; */
+
+    height: 30px;
+    margin-left: 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    width: 100px;
+    background-color: #f1f1f1b9;
+    border-color: #000000;
+    color: #181818;
+}
+
+select option:hover{
+    background-color: #14c8ab;
+}
+
+
+.canvas{
+    position: relative;
+    top: 100px;
+    display: flex;
+    place-content: space-evenly;
+}
+
+
+.canva{
+    margin-top: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    place-content: space-evenly;
+    height: 40vh;
+    width: 45%;
+    background-color: #fff;
+    box-shadow: 0 2px 5px #c7c7c7;
+}
+.canva2{
+    margin-top: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 40vh;
+    width: 35%;
+    background-color: #fff;
+    box-shadow: 0 2px 5px #c7c7c7;
+}
+
+.canva .meuCanvas{
+    display: flex;
+    height:80%;
+    width: 80%;
+}
+
+.information{
+    position: relative;
+    top: 50px;
+    display: flex;
+    place-content: space-evenly;
+}
+
+
+.counts{
+    position: relative;
+    width: 45%;
+    height: 30vh;
+    border-radius: 6px;
+    background-color: #fff;
+    
+    box-shadow: 0 2px 5px #c7c7c7;
+}
+
+.counts hr{
+    width: 95%;
+}
+
+.counts .title{
+    margin-left: 20px;
+    text-align: start;
+    margin-top: 10px;
+    color: #808080;
+}
+
+.counts span{
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 40px;
+    /* width: 200px; */
+    color: #14c8ab;
+}
+
+
+
+.counts .button{
+    position: relative;
+    top: -20px;
+    display: flex;
+    justify-content: center;
+   
+}
+
+
+.counts .btn-conta{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #14c8ab;
+    color: #f1f1f1;
+    border-radius: 5px;
+    border: solid 1px #6e6e6e;
+    width: 50%;
+    transition: 0.1s ease-in-out;
+}
+
+.counts .btn-conta:hover{
+    cursor: pointer;
+    transform: scale(1.03);
+}
+
+
+
+.counts .popup form{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    width: 80%;
+    z-index: 10;
+    box-shadow: 0 1px 8px #c7c7c7;
+}
+
+.popup .input-info{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    width: 80%;
+}
+
+.input-info input{
+    width: 100%;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    border-bottom: solid 1px #000000 90%;
+    background-color: #56d1a69f;
+}
+.input-info input:focus{
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    border-bottom: solid 1px #000000;
+    outline: 0;
+}
+
+.input-info button{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: #14c8ab;
+    border: solid 1px #fff;
+    color: #fff;
+    transition: 0.1s ease-in-out;
+}
+
+.input-info button:hover{
+    cursor: pointer;
+    background-color: #0fa189;
+}
+
+.close {
+    color: #000000;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.countnot{
+    text-align: center;
+    color: #ff0000;
+}
+
+.list-counts{
+    position: relative;
+    height: 200px;
+}
+
+.count{
+    position: relative;
+    top: 10px;
+    height: 90%;
+}
+
+.titletable{
+    position: relative;
+    display: flex;
+    color: #888b92;
+    place-content: space-evenly;
+    right: 37px;
+    width: 100%;
+}
+
+
+.infotable{
+    display: flex;
+    justify-content: center;
+     width: 90%; 
+    max-height: 75%;
+    align-items: center;
+    overflow-y: auto;
+}
+
+
+.count table{
+    margin-top: 20px;
+    top: -10px;
+    align-items: center;
+    width: 90%;
+    text-align: center;
+    height: 40%;
+    border-collapse: collapse;
+    table-layout: fixed; overflow-y: auto;
+}
+
+
+
+.infotable::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+.infotable::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+  
+.infotable::-webkit-scrollbar-thumb {
+    background-color: #8888885e;
+    border-radius: 4px;
+  }
+
+
+.infotable table  thead th{
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background-color: #888b92;
+}
+
+
+ table tbody tr{
+    position: relative;
+    /* top: auto; */
+}
+
+
+.infotable table tr td button{
+    border-radius: 10px;
+    border: #f1f1f1;
+    background-color: #14c8ab;
+    color: #ffffff;
+}
+
+.balance{
+    position: relative;
+    width: 35%;
+    height: 30vh;
+    border-radius: 6px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px #c7c7c7;
+}
+
+.balance .title{
+    position: relative;
+    display: flex;
+    justify-content: start;
+    top: 10px;
+    left: 15px;
+    color: #808080;
+}
+
+.balance span{
+    position: absolute;
+    right: 20px;
+    top: -2px;
+    font-size: 40px;
+    /* width: 200px; */
+    color: #14c8ab;
+}
+.balance hr:first-of-type{
+    width: 95%;
+}
+
+.balance .balance1{
+    height: 50%;
+}
+
+.balance .balance1 .bruto{
+   height: 30%;
+
+}
+
+.balance1 .bruto h2{
+    margin-left: 15px;
+}
+
+.balance1 .bruto h6{
+    position: relative;
+    right: 15px;
+    bottom: 29px;
+    display: flex;
+    justify-content: end;
+    color: #bdbdbd;
+}
+
+
+.balance .balance1 .liquido{
+    height: 30%;
+}
+
+.balance1 .liquido h3{
+    margin-left: 15px;
+    color: #555555;
+}
+
+.balance1 .liquido h6{
+    position: relative;
+    right: 15px;
+    bottom: 29px;
+    display: flex;
+    justify-content: end;
+    color: #bdbdbd;
+}
+
+.balance #hr2{
+    position: relative;
+    top: -26px;
+    width: 95%;
+}
+
+
+.balance  .popup-saldo{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    width: 80%;
+    z-index: 10;
+    box-shadow: 0 1px 8px #c7c7c7;
+}
+
+.popup-saldo .close{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
+.popup-saldo input{
+    position: relative;
+    left: -10px;
+    color: #f1f1f1;
+}
+
+
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+    
+}
+
+.balance .button{
+    position: relative;
+    top: -10px;
+    display: flex;
+    justify-content: center;
+   
+}
+
+
+.balance button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #14c8ab;
+    color: #f1f1f1;
+    border-radius: 10px;
+    border: solid 1px #6e6e6e;
+    width: 50%;
+    transition: 0.1s ease-in-out;
+}
+
+.balance .button:hover{
+    cursor: pointer;
+    transform: scale(1.03);
+}
+
+
+
