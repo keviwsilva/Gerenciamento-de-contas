@@ -8,7 +8,7 @@ const routes: Routes = [
   {
   path: 'contas', component: MesDataComponent
 },
-{ path: '', redirectTo: 'nome-da-rota', pathMatch: 'full' },
+{ path: '', redirectTo: 'contas', pathMatch: 'full' },
 
 ];
 
