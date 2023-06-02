@@ -1,19 +1,19 @@
 
 <div class="mes">
     <h2>De qual mês:</h2>
-    <select [(ngModel)]="mesSelecionado" (change)="saveSelectedOption()" (change)="ngOnInit()">
-        <option value="Janeiro">Janeiro</option>
-        <option value="Fevereiro" selected>Fevereiro</option>
-        <option value="Março">Março</option>
-        <option value="Abril">Abril</option>
-        <option value="Maio">Maio</option>
-        <option value="Junho">Junho</option>
-        <option value="Julho">Julho</option>
-        <option value="Agosto">Agosto</option>
-        <option value="Setembro">Setembro</option>
-        <option value="Outubro">Outubro</option>
-        <option value="Novembro">Novembro</option>
-        <option value="Dezembro">Dezembro</option>
+    <select id="mes" [(ngModel)]="mesSelecionado" (change)="carregarInformacoesMes()" (change)="reload()">
+        <option value="1">Janeiro</option>
+  <option value="2">Fevereiro</option>
+  <option value="3">Março</option>
+  <option value="4">Abril</option>
+  <option value="5">Maio</option>
+  <option value="6">Junho</option>
+  <option value="7">Julho</option>
+  <option value="8">Agosto</option>
+  <option value="9">Setembro</option>
+  <option value="10">Outubro</option>
+  <option value="11">Novembro</option>
+  <option value="12">Dezembro</option>
     </select>
 </div>
 <div class="information">
@@ -26,12 +26,15 @@
         <div class="popup">
             <form *ngIf="showPopUp" [formGroup]="formulario" (ngSubmit)="CadastrarConta()">
                 <div class="popup-mounth">
+                    <h2>Adicionando Conta</h2>
                     <span (click)="closePopup()" class="close">&times;</span>
                     <div class="input-info">
                         <!-- <div class="form-group"> -->
+                        <label for="nome">Nome:</label>
                         <input type="text" class="name" placeholder="Nome da conta" formControlName="nome">
                         <!-- </div> -->
                         <!-- <div class="form-group"> -->
+                        <label for="valor">Valor:</label>
                         <input type="number" class="value" placeholder="Valor conta" formControlName="valor">
                         <!-- </div> -->
                         <button type="submit" class="btn">Adicionar</button>
@@ -39,7 +42,24 @@
                 </div>
             </form>
         </div>
-
+        <div *ngIf="showPopUpEdit" class="popup2">
+            <div class="popup-content">
+              <h2>Editando Conta</h2>
+              <span (click)="ClosePopup2()" class="close">&times;</span>
+              <form [formGroup]="formulario">
+                <div class="input-info">
+                <label for="nome">Nome:</label>
+                <input id="nome" formControlName="nome" [(ngModel)]="editingConta!.nome" placeholder="Nome">
+          
+                <label for="valor">Valor:</label>
+                <input id="valor" formControlName="valor" [(ngModel)]="editingConta!.valor" placeholder="Valor">
+          
+                <button (click)="salvarEdicaoConta()">Salvar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          
         <div class="list-counts">
             <div class="countnot" *ngIf="contas.length == 0">
                 <h3 class="sem-conta">Sem Contas ainda</h3>
@@ -48,6 +68,7 @@
                 <div class="titletable">
                     <h6>nome</h6>
                     <h6>valor</h6>
+                    <h6>editar</h6>
                     <h6>excluir</h6>
                 </div>
                 <div class="infotable">
@@ -63,7 +84,7 @@
                         <tr *ngFor="let conta of contas">
                             <td>{{conta.nome}}</td>
                             <td>R${{conta.valor}}</td>
-
+                            <td><button (click)="editarConta(conta)">Editar</button></td>
                             <td>
                                 <!-- <button type="button" class="Paid" (click)="AtualizarConta(conta.contaId)">
                             <fa-icon [icon]="faCheckCircle"></fa-icon>

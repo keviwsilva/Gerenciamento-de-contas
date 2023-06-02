@@ -150,6 +150,9 @@ select option:hover{
     transform: scale(1.03);
 }
 
+.popup, .popup2 > h2{
+    color: #808080;
+}
 
 
 .counts .popup form{
@@ -175,6 +178,8 @@ select option:hover{
     width: 80%;
 }
 
+
+
 .input-info input{
     width: 100%;
     margin: 10px;
@@ -182,6 +187,13 @@ select option:hover{
     border-radius: 5px;
     border-bottom: solid 1px #000000 90%;
     background-color: #56d1a69f;
+}
+
+.input-info label{
+    position: relative;
+    left: 10px;
+    bottom: -10px;
+    color: #0fa189;
 }
 .input-info input:focus{
     box-shadow: 0 0 0 0;
@@ -201,6 +213,61 @@ select option:hover{
 }
 
 .input-info button:hover{
+    cursor: pointer;
+    background-color: #0fa189;
+}
+
+
+.counts .popup2 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    width: 80%;
+    z-index: 10;
+    box-shadow: 0 1px 8px #c7c7c7;
+}
+
+.popup2 .input-info{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    width: 80%;
+}
+
+
+.popup2 .input-info input{
+    width: 100%;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    border-bottom: solid 1px #000000 90%;
+    background-color: #56d1a69f;
+}
+.popup2 .input-info input:focus{
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    border-bottom: solid 1px #000000;
+    outline: 0;
+}
+
+.popup2  .input-info button{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: #14c8ab;
+    border: solid 1px #fff;
+    color: #fff;
+    transition: 0.1s ease-in-out;
+}
+
+.popup2 .input-info button:hover{
     cursor: pointer;
     background-color: #0fa189;
 }

@@ -21,6 +21,16 @@
     border-radius: 10px;
     box-shadow: 0 2px 5px #c7c7c7;
     /* margin-left: 10px; */
+    /* display: flex; */
+  }
+.navbar .route{
+  position: relative;
+  left: 6%;
+  display: flex;
+}
+
+  .navbar .route #dashboard{
+    color: #969696;
   }
   
   .aside {
@@ -62,8 +72,15 @@
     width: 80%;
     margin-left: 20px;
     border-radius: 10px;
-    /* background-color: antiquewhite; */
+    background-color: #14c8aa73;
     margin-bottom: 10px;
+}
+
+.aside .dashboardMes a{
+  position: relative;
+  color: #fff;
+  list-style: none;
+  top: 5px;
 }
 
 

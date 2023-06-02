@@ -11,13 +11,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MesDataComponent } from './mes-data/mes-data.component';
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { AnoDataComponent } from './ano-data/ano-data.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     MesDataComponent,
-    AnoDataComponent
   ],
   imports: [
     BrowserModule,

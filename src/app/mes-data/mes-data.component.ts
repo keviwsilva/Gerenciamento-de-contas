@@ -29,8 +29,12 @@ export class MesDataComponent implements OnInit {
   chartValue = [];
   showPopUpBalance!: boolean;
   contasPorMes: { [key: string]: Conta[] } = {};
-  mesSelecionado!: string;
- 
+  mesSelecionado!: number;
+  informacoesMes: string[] = [];
+  editingConta: Conta | null = null;
+  showPopUpEdit!: boolean;
+
+
 
   constructor() { };
 
@@ -50,27 +54,27 @@ export class MesDataComponent implements OnInit {
     this.showPopUpBalance = false;
   }
 
-  onChange(){
+  onChange() {
 
-  this.CadastrarConta();
-  this.ExibirProdutos();
-  this.ExibirSaldo();
-  this.TotalContas();
-  this.TotalSaldo();
-  this.CadastrarSaldo();
-  // this.mesSelecao()
-  // this.ExcluirConta();
-  // this.saveSelectedOption();
-    localStorage.setItem('mesSelecionado', this.mesSelecionado);
-  
-}
-
-  ngOnInit(): void {
+    this.CadastrarConta();
     this.ExibirProdutos();
     this.ExibirSaldo();
     this.TotalContas();
     this.TotalSaldo();
-    // this.SelecaoMes();
+    this.CadastrarSaldo();
+
+    window.location.reload();
+
+  }
+
+  ngOnInit(): void {
+    this.atualizarMesSelecionado();
+    this.carregarInformacoesMes();
+    this.ExibirProdutos();
+    this.ExibirSaldo();
+    this.TotalContas();
+    this.TotalSaldo();
+
     this.formulario = new FormGroup({
       contaId: new FormControl(),
       nome: new FormControl(),
@@ -81,7 +85,6 @@ export class MesDataComponent implements OnInit {
       saldo: new FormControl(),
     });
 
-    // console.log(this.contas)
     const value = [];
     const name = [];
     for (let i = 0; i < this.contas.length; i++) {
@@ -90,23 +93,22 @@ export class MesDataComponent implements OnInit {
       if (this.contas.length > 0) {
         value.push(valor);
         name.push(nome)
-        
+
       }
     }
-    console.log(value)
 
     const previousChart = Chart.getChart('meuCanvas');
     if (previousChart) {
       previousChart.destroy();
     }
-    
+
     const previousChart1 = Chart.getChart('meuCanvas2');
     if (previousChart1) {
       previousChart1.destroy();
     }
 
 
-   new Chart('meuCanvas', {
+    new Chart('meuCanvas', {
       type: 'doughnut',
       data: {
         labels: name,
@@ -121,7 +123,6 @@ export class MesDataComponent implements OnInit {
               '#754eff'
             ],
             hoverOffset: 4,
-            // offset: 10,
             borderRadius: 10,
           },
         ]
@@ -140,7 +141,7 @@ export class MesDataComponent implements OnInit {
         }
       }
     });
-  new Chart('meuCanvas2', {
+    new Chart('meuCanvas2', {
       type: 'doughnut',
       data: {
         labels: ["contas", "Saldo"],
@@ -155,65 +156,53 @@ export class MesDataComponent implements OnInit {
               '#754eff'
             ],
             hoverOffset: 4,
-            // offset: 20,
             borderRadius: 10,
           },
         ]
       }
     });
-    
-    
-    // const storedValue = localStorage.getItem('mesSelecionado');
-    // if (storedValue) {
-    //   this.mesSelecionado = storedValue;
-    // }
-    // else{
-    //   this.mesSelecionado = 'Janeiro'
-    // }
-    // console.log(this.balances)
-    // this.loadSelectedOption();
-  }
-  
-  loadSelectedOption(): void {
-    const savedOption = localStorage.getItem('selectedOption');
-    if (savedOption) {
-      this.mesSelecionado = savedOption;
-    }
-  }
-
-  saveSelectedOption(): void {
-    localStorage.setItem('selectedOption', this.mesSelecionado);
-  }
-// Função para salvar a opção selecionada no localStorage
 
 
-  // mesSelecao(){
-    
-  // localStorage.setItem('mesSelecionado', this.mesSelecionado);
-  // // CADASTRO DE CONTAS
-  // }
-  CadastrarConta(): void {
-    this.formulario.value.contaId = Guid.create().toString();
-    const conta: Conta = this.formulario.value;
-    this.contas.push(conta);
-    // localStorage.setItem("BD", JSON.stringify(this.contas));
-    localStorage.setItem(`contas_${this.mesSelecionado}`, JSON.stringify(this.contas));
-    this.formulario.reset();
-    this.closePopup()
+  }
+
+
+  carregarInformacoesMes() {
+    const informacoesMesLocalStorage = localStorage.getItem(`contas_${this.mesSelecionado}`);
+    const informacoesMesLocalStoragesaldo2 = localStorage.getItem(`saldo_${this.mesSelecionado}`);
+    this.contas = informacoesMesLocalStorage ? JSON.parse(informacoesMesLocalStorage) : [];
+    this.balances = informacoesMesLocalStoragesaldo2 ? JSON.parse(informacoesMesLocalStoragesaldo2) : [];
+  }
+
+  reload() {
     window.location.reload();
   }
+
+
+  CadastrarConta(): void {
+    if (this.formulario) {
+      this.formulario.value.contaId = Guid.create().toString();
+      const conta: Conta = this.formulario.value;
+      this.contas.push(conta);
+      localStorage.setItem(`contas_${this.mesSelecionado}`, JSON.stringify(this.contas));
+      this.formulario.reset();
+      this.closePopup()
+      this.mesSelecionado = parseInt(localStorage.getItem('mesSelecionado') || '1');
+    }
+    window.location.reload();
+  }
+
 
   ExibirProdutos(): void {
     const savedData = localStorage.getItem(`contas_${this.mesSelecionado}`)
     if (savedData !== null) {
       this.contas = JSON.parse(savedData);
-      // console.log(this.contas)
     }
     else {
 
       this.contas = [];
     }
   }
+
 
   AtualizarConta(contaId: string) {
     const indice: number = this.contas.findIndex(p => p.contaId == contaId);
@@ -228,74 +217,102 @@ export class MesDataComponent implements OnInit {
     localStorage.setItem(`contas_${this.mesSelecionado}`, JSON.stringify(this.contas))
     window.location.reload();
   }
-  
+
   ExcluirConta(id: string) {
     for (let i = 0; i < this.contas.length; i++) {
       if (this.contas[i].contaId == id) {
         this.contas.splice(i, 1);
         window.location.reload();
       }
-      
+
       localStorage.setItem(`contas_${this.mesSelecionado}`, JSON.stringify(this.contas))
     }
-    
+
   }
-  
+
   TotalContas(): void {
     const valores1: number[] = [];
     let soma = 0;
     for (let i = 0; i < this.contas.length; i++) {
-      // console.log(this.contas[i].valor)
       const valores = this.contas[i].valor;
       soma += valores;
       valores1.push(soma)
     }
-    console.log(soma)
     this.valorfinal = soma;
   }
 
   // CADASTRO DE SALDO
 
   CadastrarSaldo(): void {
-      const saldo: Balance = this.balance.value;
-      localStorage.removeItem(`saldo_${this.mesSelecionado}`)
-      // this.balances.push(saldo);
-      this.balances = [saldo]
-      localStorage.setItem(`saldo_${this.mesSelecionado}`, JSON.stringify(this.balances));
-      this.balance.reset();
-      // console.log(saldo);
-      this.closePopupBalance()
-      window.location.reload();
+    const saldo: Balance = this.balance.value;
+    localStorage.removeItem(`saldo_${this.mesSelecionado}`)
+    this.balances = [saldo]
+    localStorage.setItem(`saldo_${this.mesSelecionado}`, JSON.stringify(this.balances));
+    this.balance.reset();
+    this.closePopupBalance();
+    window.location.reload();
   }
-  
+
   ExibirSaldo(): void {
-      const savedData = localStorage.getItem(`saldo_${this.mesSelecionado}`)
-      if (savedData !== null) {
-        this.balances = JSON.parse(savedData);
-        // console.log(this.balances)
-  
-      }
-      else {
-  
-        this.balances = [];
-      }
+    const savedData = localStorage.getItem(`saldo_${this.mesSelecionado}`)
+    if (savedData !== null) {
+      this.balances = JSON.parse(savedData);
+
+    }
+    else {
+      this.balances = [];
+    }
   }
-  
+
   TotalSaldo(): void {
-      const valores2 = [];
-      let result = 0;
-      let saldototal = 0;
-      for (let i = 0; i < this.balances.length; i++) {
-        const total = this.balances[i].saldo
-        saldototal = total
-        result = total - this.valorfinal;
-        valores2.push(total)
-      }
-      this.saldo = result
-      this.totalsaldo = saldototal
-      // console.log(this.saldo)
-      // console.log(this.saldo)
-  
+    const valores2 = [];
+    let result = 0;
+    let saldototal = 0;
+    for (let i = 0; i < this.balances.length; i++) {
+      const total = this.balances[i].saldo
+      saldototal = total;
+      result = total - this.valorfinal;
+      valores2.push(total)
+    }
+    this.saldo = result
+    this.totalsaldo = saldototal
   }
+
+  atualizarMesSelecionado() {
+    const selectMes = document.getElementById('mes') as HTMLSelectElement;
+    this.mesSelecionado = parseInt(localStorage.getItem('mesSelecionado') || '1');
+    selectMes.value = this.mesSelecionado.toString();
+    selectMes.addEventListener('change', () => {
+      this.mesSelecionado = parseInt(selectMes.value);
+      // localStorage.setItem('mesSelecionado', this.mesSelecionado.toString());
+      localStorage.setItem('mesSelecionado', this.mesSelecionado.toString());
+      this.carregarInformacoesMes();
+    });
+    this.carregarInformacoesMes();
+  }
+
+  
+
+
+  editarConta(conta: Conta) {
+    this.editingConta = { ...conta };
+    this.showPopUpEdit = true;
+  }
+  salvarEdicaoConta() {
+    const indice: number = this.contas.findIndex(p => p.contaId === this.editingConta?.contaId);
+    if (indice !== -1 && this.editingConta) {
+      this.contas[indice] = { ...this.editingConta };
+     
+      localStorage.setItem(`contas_${this.mesSelecionado}`, JSON.stringify(this.contas));
+      this.ClosePopup2();
+      window.location.reload();
+    }
+  }
+  
+  ClosePopup2() {
+    this.showPopUpEdit = false;
+    this.editingConta = null;
+  }
+  
 
 }
