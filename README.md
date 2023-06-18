@@ -12,24 +12,29 @@ Exibir gráficos mostrando a distribuição das despesas e o saldo restante
 Node.js e npm (Node Package Manager) instalados na sua máquina
 
 ## Primeiros Passos
-``` Clone o repositório:
-
+ Clone o repositório:
+```
 bash
 Copy code
 git clone https://github.com/your-username/rastreador-despesas-mensais.git
-Navegue até o diretório do projeto:
 
+```
+Navegue até o diretório do projeto:
+```
 bash
 Copy code
 cd rastreador-despesas-mensais
+```
 Instale as dependências:
-
+```
 Copy code
 npm install
+``` 
 Inicie o servidor de desenvolvimento:
-
+```
 Copy code
 ng serve
+```
 Abra seu navegador da web e visite http://localhost:4200 para acessar a aplicação.
 
 ## Uso
