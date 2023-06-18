@@ -1,4 +1,4 @@
-Rastreador de Despesas Mensais
+*Rastreador de Despesas Mensais*
 Este é um projeto Angular para rastrear despesas mensais. Ele permite que os usuários adicionem e gerenciem suas despesas para diferentes meses, calculem o total das despesas e acompanhem seu saldo.
 
 Recursos
