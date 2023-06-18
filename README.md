@@ -1,27 +1,60 @@
-# ContasApp
+Rastreador de Despesas Mensais
+Este é um projeto Angular para rastrear despesas mensais. Ele permite que os usuários adicionem e gerenciem suas despesas para diferentes meses, calculem o total das despesas e acompanhem seu saldo.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.1.
+Recursos
+Adicionar, editar e excluir despesas
+Visualizar a lista de despesas de um mês específico
+Calcular o total das despesas de um mês específico
+Acompanhar o saldo, inserindo o saldo inicial e deduzindo o total das despesas
+Exibir gráficos mostrando a distribuição das despesas e o saldo restante
+Pré-requisitos
+Node.js e npm (Node Package Manager) instalados na sua máquina
+Primeiros Passos
+Clone o repositório:
 
-## Development server
+bash
+Copy code
+git clone https://github.com/your-username/rastreador-despesas-mensais.git
+Navegue até o diretório do projeto:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+bash
+Copy code
+cd rastreador-despesas-mensais
+Instale as dependências:
 
-## Code scaffolding
+Copy code
+npm install
+Inicie o servidor de desenvolvimento:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Copy code
+ng serve
+Abra seu navegador da web e visite http://localhost:4200 para acessar a aplicação.
 
-## Build
+Uso
+Selecione um mês no menu suspenso para visualizar as despesas daquele mês.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Clique no botão "Adicionar Despesa" para adicionar uma nova despesa. Preencha as informações necessárias, como nome e valor, e clique em "Salvar" para adicionar a despesa.
 
-## Running unit tests
+Para editar uma despesa, clique no botão "Editar" ao lado da despesa. Faça as alterações necessárias e clique em "Salvar" para atualizar a despesa.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Para excluir uma despesa, clique no botão "Excluir" ao lado da despesa.
 
-## Running end-to-end tests
+Insira o saldo inicial no campo "Saldo Inicial" e clique em "Salvar" para definir o saldo para o mês selecionado.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Os gráficos na página fornecem representações visuais da distribuição das despesas e do saldo restante.
 
-## Further help
+Tecnologias Utilizadas
+Angular: Um framework JavaScript para construir aplicações web
+Chart.js: Uma biblioteca JavaScript para criar gráficos e diagramas
+FontAwesome: Uma biblioteca de ícones para projetos web
+Guid TypeScript: Uma biblioteca para gerar identificadores únicos globais (GUIDs)
+Licença
+Este projeto está licenciado sob a Licença MIT.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Reconhecimentos
+Este projeto foi desenvolvido como exercício de aprendizado para Angular.
+Documentação do Chart.js: https://www.chartjs.org/docs/latest/
+Ícones do FontAwesome: https://fontawesome.com/icons?d=gallery&p=2&m=free
+
+
+
