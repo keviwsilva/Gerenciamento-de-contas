@@ -13,15 +13,17 @@ Node.js e npm (Node Package Manager) instalados na sua máquina
 
 ## Primeiros Passos
  Clone o repositório:
-```
+
 bash
+```
 Copy code
 git clone https://github.com/your-username/rastreador-despesas-mensais.git
 
 ```
 Navegue até o diretório do projeto:
-```
+
 bash
+```
 Copy code
 cd rastreador-despesas-mensais
 ```
